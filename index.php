@@ -22,19 +22,19 @@ if(!array_key_exists($type, $possible_types)) {
         <div id="container">
             <form action='mla.php' method='post'>
                 <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" />
-                <table id="mlaform" id="mlaform">
+                <input type="hidden" name="type" value="<?php echo $type; ?>" />
+                <table id="mlaform" id="mlaform"><pre>
+                    <?php
+                    $form = generate_form($type);
+                    foreach($form as $name => $attr) {
+                    ?>
                     <tr>
-                        <td>Source: Website</td>
-                        <td><input type="text" class="input single" name="website" /></td>
+                        <td><?php echo $name; ?></td>
+                        <td>
+                            <input <?php foreach($attr as $attr => $value) { echo $attr.'="'.$value.'" '; }?> />
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Source: Magazine Name</td>
-                        <td><input type="text" class="input single" name="magazine" /></td>
-                    </tr>
-                    <tr>
-                        <td>Source: Magazine Pages</td>
-                        <td><input type="text" class="input single" name="magazine_pages" /></td>
-                    </tr>
+                    <?php } ?>
                     <tr><td><a href="javascript:addAuthor();">Add Author</a></tr></td>
                     <tr class="borderbottom">
                         <td>Author: Name</td>

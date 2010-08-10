@@ -34,6 +34,37 @@ function mla_types() {
     );
 }
 
+function generate_form($type) {
+    // This generates the form.. or an easy array to iterate through
+    // to get the form, at least.
+    $defclass = 'input single';
+    switch($type) {
+        case 'book':
+            // Author. Title of Book. City of Publication: Publisher, Year.
+            $form = array(
+                'Book Title' => array('class' => $defclass, 'name' => 'title'),
+                'City of Pub.' => array('class' => $defclass, 'name' => 'city'),
+                'Publisher' => array('class' => $defclass, 'name' => 'publisher'),
+                'Year of Pub.' => array('class' => $defclass, 'name' => 'year'),
+            );
+        case 'essay':
+            // Author of Story. "Title of Story." Title of Book. Name of Editor. Edition (if given). 
+            //     City of Publication: Publisher, Year. Page numbers.
+            $form = array(
+                'Author of Story' => array('class' => $defclass, 'name' => 'author'),
+                'Title of Story' => array('class' => $defclass, 'name' => 'title'),
+                'Title of Book' => array('class' => $defclass, 'name' => 'book'),
+                'Editor' => array('class' => $defclass, 'name' => 'editor'),
+                'Edition' => array('class' => $defclass, 'name' => 'edition'),
+                'City of Pub.' => array('class' => $defclass, 'name' => 'city'),
+                'Publisher' => array('class' => $defclass, 'name' => 'publisher'),
+                'Year' => array('class' => $defclass, 'name' => 'year'),
+                'Num. of Pages' => array('class' => $defclass, 'name' => 'pages'),
+            );
+    }
+    return $form;
+}
+
 // Used in global.php
 function new_or_error($session, $newmsg, $errmsg) {
     if($session['new']) return $newmsg;
