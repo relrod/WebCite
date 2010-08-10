@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-family: Calibri, 'Helvetica Nueue', Helvetica, 'Lucida Grande', Arial, sans-serif;
+    text-align: center; /* IE6 */
+}
+#container {
+    background-color: #f7f7f7;
+    text-align: left;
+    width: 700px;
+    border: 1px solid #aaa;
+    margin: 25px auto;
+    padding: 10px;
+}
+#container input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#container input.input {
+    height: 30px;
+    width: 170px;
+    font-size: 1.4em;
+    font-family: Calibri, 'Helvetica Nueue', Helvetica, 'Lucida Grande', Arial, sans-serif;
+}
+#container input.single {
+    width: 530px;
+}
+#container input.default {
+    color: #aaa;
+}
+#container input.submit {
+    font-size: 2em;
+    background-color: #ddd;
+    text-align: center;
+    width: 100%;
+    border: 1px solid #aaa;
+}
+#container input.submit:hover {
+    border: 1px solid red;
+}
+#container table {
+    border-collapse: collapse;
+    width: 100%;
+}
+#container table tr.borderbottom {
+    border-bottom: 2px solid #aaa;
+}
