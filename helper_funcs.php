@@ -17,3 +17,5 @@ function fetch_url_title($url) {
     if(count($title) == 0) return false;
     return $title[1];
 }
+
+header("Location: /");
