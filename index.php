@@ -16,9 +16,17 @@ $_SESSION['csrf_token'] = sha1(uniqid(rand()));
             <form action='mla.php' method='post'>
                 <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" />
                 <table id="mlaform" id="mlaform">
-                    <tr class="borderbottom">
+                    <tr>
                         <td>Source: Website</td>
                         <td><input type="text" class="input single" name="website" /></td>
+                    </tr>
+                    <tr>
+                        <td>Source: Magazine Name</td>
+                        <td><input type="text" class="input single" name="magazine" /></td>
+                    </tr>
+                    <tr>
+                        <td>Source: Magazine Pages</td>
+                        <td><input type="text" class="input single" name="magazine_pages" /></td>
                     </tr>
                     <tr><td><a href="javascript:addAuthor();">Add Author</a></tr></td>
                     <tr class="borderbottom">
