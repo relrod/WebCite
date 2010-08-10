@@ -1,7 +1,14 @@
 <?php
 // Plug CSRF Security Hole
 session_start();
+require_once './helper_funcs.php';
 $_SESSION['csrf_token'] = sha1(uniqid(rand()));
+$type = $_GET['type'];
+$possible_types = mla_types();
+
+if(!array_key_exists($type, $possible_types)) {
+    header("Location: ./global.php");
+}
 ?>
 <!doctype html>
 <html lang="en">

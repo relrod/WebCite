@@ -18,4 +18,26 @@ function fetch_url_title($url) {
     return $title[1];
 }
 
-header("Location: /");
+function mla_types() {
+    // Returns an array of types we accept
+    return array(
+        'book' => 'Book',
+        'essay' => 'Essay',
+        'ref' => 'Reference (Encyclopedia)',
+        'magazine' => 'Magazine',
+        'article' => 'Article (newspaper or other)',
+        'library' => 'Library Database',
+        'web' => 'Website',
+        'interview' => 'First-person Interview',
+        'tv' => 'Television',
+        'video' => 'Other Video',
+    );
+}
+
+// Used in global.php
+function new_or_error($session, $newmsg, $errmsg) {
+    if($session['new']) return $newmsg;
+    if($session['err']) return $errmsg;
+}
+
+#header("Location: /");
