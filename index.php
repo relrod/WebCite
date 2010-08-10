@@ -16,10 +16,8 @@ $_SESSION['csrf_token'] = sha1(uniqid(rand()));
             font-family: Calibri, 'Helvetica Nueue', Helvetica, 'Lucida Grande', Arial, sans-serif;
             text-align: center; /* IE6 */
         }
-        body {
-            background-color: #f7f7f7;
-        }
         #container {
+            background-color: #f7f7f7;
             text-align: left;
             width: 700px;
             border: 1px solid #aaa;
@@ -47,6 +45,10 @@ $_SESSION['csrf_token'] = sha1(uniqid(rand()));
             background-color: #ddd;
             text-align: center;
             width: 100%;
+            border: 1px solid #aaa;
+        }
+        #container input.submit:hover {
+            border: 1px solid red;
         }
         #container table {
             border-collapse: collapse;
