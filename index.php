@@ -59,35 +59,38 @@ $_SESSION['csrf_token'] = sha1(uniqid(rand()));
         <script>          
         function addAuthor() {
             var table = document.getElementById('mlaform');
+            var tr = document.createElement('tr');
+            
+            // Only one tr per author now.
+            var td = document.createElement('td');
+            td.appendChild(document.createTextNode("Author: Name"));
+            tr.appendChild(td);
+            
+            var td = document.createElement('td'); // Re-initialize this, two td's per author
             
             // This is so we can style the addition as a whole.
             var bottomborder = document.createElement('hr');
             bottomborder.setAttribute('style', 'clear: both');
             
             var authorform = new Array()
-            authorform['author_first_name'] = "Author: First Name";
-            authorform['author_middle_initial'] = "Author: Middle Initial"
-            authorform['author_last_name'] = "Author: Last Name";
+            authorform['author_first_name'] = "First";
+            authorform['author_middle_initial'] = "M.I.";
+            authorform['author_last_name'] = "Last";
             for(key in authorform) { // Better than repeating this 3 times.
-                var tr = document.createElement('tr');
-                var td = document.createElement('td');
-                td.appendChild(document.createTextNode(authorform[key]));
-                tr.appendChild(td);
-                
-                var td = document.createElement('td'); // Re-initialize this.
                 var ele = document.createElement('input');
                 ele.setAttribute('type', 'text');
-                ele.setAttribute('class', 'input');
+                ele.setAttribute('class', 'input default');
                 ele.setAttribute('name', key+'[]');
+                ele.setAttribute('onfocus', "formonclick(this, '"+ authorform[key] + "');");
+                ele.setAttribute('onblur', "formonblur(this, '"+ authorform[key] + "');");
+                ele.setAttribute('value', authorform[key]);
+                
                 td.appendChild(ele);
                 tr.appendChild(td);
                 
                 if(key == 'author_last_name') tr.setAttribute('class', 'borderbottom');
-                
-                
-                table.appendChild(tr);
-
             }
+            table.appendChild(tr);
         }
         
         function formonclick(obj, value, newcolor) {
@@ -125,11 +128,11 @@ $_SESSION['csrf_token'] = sha1(uniqid(rand()));
                         <td><input type="text" class="input single" name="website" /></td>
                     </tr>
                     <tr><td><a href="javascript:addAuthor();">Add Author</a></tr></td>
-                    <tr>
+                    <tr class="borderbottom">
                         <td>Author: Name</td>
                         <td>
                             <input type="text" class="input default" name="author_first_name[]" value="First" onfocus="formonclick(this, 'First');" onblur="formonblur(this, 'First');"/>
-                            <input type="text" class="input default" name="author_middle_initial[]" value="M.I." size="2" onfocus="formonclick(this, 'M.I.');" onblur="formonblur(this, 'M.I.');" />
+                            <input type="text" class="input default" name="author_middle_initial[]" value="M.I." onfocus="formonclick(this, 'M.I.');" onblur="formonblur(this, 'M.I.');" />
                             <input type="text" class="input default" name="author_last_name[]" value="Last" onfocus="formonclick(this, 'Last');" onblur="formonblur(this, 'Last');" />
                         </td>
                     </tr>
