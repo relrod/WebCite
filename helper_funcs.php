@@ -40,7 +40,7 @@ function generate_form($type) {
     $defclass = 'input single';
     switch($type) {
         case 'book':
-            // Author. Title of Book. City of Publication: Publisher, Year.
+            // Author. _Title of Book_. City of Publication: Publisher, Year.
             $form = array(
                 'Book Title' => array('class' => $defclass, 'name' => 'title'),
                 'City of Pub.' => array('class' => $defclass, 'name' => 'city'),
@@ -48,10 +48,9 @@ function generate_form($type) {
                 'Year of Pub.' => array('class' => $defclass, 'name' => 'year'),
             );
         case 'essay':
-            // Author of Story. "Title of Story." Title of Book. Name of Editor. Edition (if given). 
+            // Author of Story. "Title of Story." _Title of Book_. Name of Editor. Edition (if given). 
             //     City of Publication: Publisher, Year. Page numbers.
             $form = array(
-                'Author of Story' => array('class' => $defclass, 'name' => 'author'),
                 'Title of Story' => array('class' => $defclass, 'name' => 'title'),
                 'Title of Book' => array('class' => $defclass, 'name' => 'book'),
                 'Editor' => array('class' => $defclass, 'name' => 'editor'),
@@ -61,6 +60,27 @@ function generate_form($type) {
                 'Year' => array('class' => $defclass, 'name' => 'year'),
                 'Num. of Pages' => array('class' => $defclass, 'name' => 'pages'),
             );
+        case 'ref':
+            // Author of Article (if given). "Article Title." _Title of Book_. City of Publication: 
+            //     Publisher, Year.
+            'Title of Article' => array('class' => $defclass, 'name' => 'title'),
+            'Title of Book' => array('class' => $defclass, 'name' => 'book'),
+            'City of Pub.' => array('class' => $defclass, 'name' => 'city'),
+            'Publisher' => array('class' => $defclass, 'name' => 'publisher'),
+            'Year' => array('class' => $defclass, 'name' => 'year'),
+        case 'magazine':
+            // Author. "Title of Article." _Title of Magazine_ Date: Page(s).
+            'Title of Article' => array('class' => $defclass, 'name' => 'title'),
+            'Title of Magazine' => array('class' => $defclass, 'name' => 'magtitle'),
+            'Date' => array('class' => $defclass, 'name' => 'date'), // TODO: Make this pretty/not a string.
+            'Page(s)' => array('class' => $defclass, 'name' => 'pages'),
+        case 'article':
+            // Author. "Title of Article." _Name of Newspaper_ Date, edition: Page(s).
+            'Title of Article' => array('class' => $defclass, 'name' => 'title'),
+            'Title of Newspaper' => array('class' => $defclass, 'name' => 'newstitle'),
+            'Date' => array('class' => $defclass, 'name' => 'date'), // TODO: Make this pretty/not a string.
+            'Edition' => array('class' => $defclass, 'name' => 'edition'),
+            'Page(s)' => array('class' => $defclass, 'name' => 'pages'),        
     }
     return $form;
 }
