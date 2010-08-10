@@ -132,10 +132,8 @@ $_SESSION['csrf_token'] = sha1(uniqid(rand()));
                     <tr><td><a href="javascript:addAuthor();">Add Author</a></tr></td>
                     <tr class="borderbottom">
                         <td>Author: Name</td>
-                        <td>
-                            <input type="text" class="input default" name="author_first_name[]" value="First" onfocus="formonclick(this, 'First');" onblur="formonblur(this, 'First');"/>
-                            <input type="text" class="input default" name="author_middle_initial[]" value="M.I." onfocus="formonclick(this, 'M.I.');" onblur="formonblur(this, 'M.I.');" />
-                            <input type="text" class="input default" name="author_last_name[]" value="Last" onfocus="formonclick(this, 'Last');" onblur="formonblur(this, 'Last');" />
+                        <td><!-- Yes, yes. It's all one line. Because we don't want spaces. Until I get spaces working in JS -->
+                            <input type="text" class="input default" name="author_first_name[]" value="First" onfocus="formonclick(this, 'First');" onblur="formonblur(this, 'First');"/><input type="text" class="input default" name="author_middle_initial[]" value="M.I." onfocus="formonclick(this, 'M.I.');" onblur="formonblur(this, 'M.I.');" /><input type="text" class="input default" name="author_last_name[]" value="Last" onfocus="formonclick(this, 'Last');" onblur="formonblur(this, 'Last');" />
                         </td>
                     </tr>
 
