@@ -24,6 +24,23 @@ $_SESSION['csrf_token'] = sha1(uniqid(rand()));
             width: 700px;
             border: 1px solid #aaa;
             margin: 25px auto;
+            padding: 10px;
+        }
+        #container input {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #container input.input {
+            height: 30px;
+            width: 170px;
+            font-size: 1.4em;
+            font-family: Calibri, 'Helvetica Nueue', Helvetica, 'Lucida Grande', Arial, sans-serif;
+        }
+        #container input.single {
+            width: 530px;
+        }
+        #container input.default {
+            color: #aaa;
         }
         #container input.submit {
             font-size: 2em;
@@ -72,27 +89,51 @@ $_SESSION['csrf_token'] = sha1(uniqid(rand()));
 
             }
         }
+        
+        function formonclick(obj, value, newcolor) {
+            if (obj.value == value) {
+                obj.value='';
+                if(newcolor == undefined) {
+                    obj.style.color='#444444';
+                } else {
+                    obj.style.color=newcolor;
+                }
+            }
+        }
+
+        function formonblur(obj, value, newcolor) {
+            if(obj.value == '') {
+                obj.value=value;
+                if(newcolor == undefined) {
+                    obj.style.color='#aaaaaa';
+                } else {
+                    obj.style.color=newcolor;
+                }
+            }
+        }
+        
         </script>
     </head>
     <body>
+        <h4>Fill in relevant pieces of information</h4>
         <div id="container">
             <form action='mla.php' method='post'>
                 <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" />
                 <table id="mlaform" id="mlaform">
-                    <a href="javascript:addAuthor();">Add Author</a>
-                    
-                    <tr>
-                        <td>Author: First Name</td>
-                        <td><input type="text" class="input" name="author_first_name[]" /></td>
-                    </tr>
-                    <tr>
-                        <td>Author: Middle Initial</td>
-                        <td><input type="text" class="input" name="author_middle_initial[]" /></td>
-                    </tr>
                     <tr class="borderbottom">
-                        <td>Author: Last Name</td>
-                        <td><input type="text" class="input" name="author_last_name[]" /></td>
+                        <td>Source: Website</td>
+                        <td><input type="text" class="input single" name="website" /></td>
                     </tr>
+                    <tr><td><a href="javascript:addAuthor();">Add Author</a></tr></td>
+                    <tr>
+                        <td>Author: Name</td>
+                        <td>
+                            <input type="text" class="input default" name="author_first_name[]" value="First" onfocus="formonclick(this, 'First');" onblur="formonblur(this, 'First');"/>
+                            <input type="text" class="input default" name="author_middle_initial[]" value="M.I." size="2" onfocus="formonclick(this, 'M.I.');" onblur="formonblur(this, 'M.I.');" />
+                            <input type="text" class="input default" name="author_last_name[]" value="Last" onfocus="formonclick(this, 'Last');" onblur="formonblur(this, 'Last');" />
+                        </td>
+                    </tr>
+
                 </table>
                 
                 <input type="submit" value="Generate MLA!" class="submit" />
