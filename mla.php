@@ -10,11 +10,17 @@ validate_csrf();
 </pre>
 
 <?php
-if(is_valid_url($_POST['website'])) {
-    $title = fetch_url_title($_POST['website']);
-    if(!$title) $title = "&lt;title&gt; tag could not be found.";
+if($_POST['website'] != '') {
+    if(is_valid_url($_POST['website'])) {
+        $title = fetch_url_title($_POST['website']);
+        if(!$title) $title = "&lt;title&gt; tag could not be found.";
+    } else {
+        $title = "INVALID URL given.";
+    }
 } else {
-    $title = "&lt;INVALID url given.&gt;";
+    // They didn't pass us a website, it must be something else.
+    // I'm beginning to think a ?type=website, ?type=book, etc would be easier.
+    $title = "&lt;not website&gt;";
 }
 ?>
 <b><?php echo $title; ?></b>
