@@ -103,7 +103,6 @@ function generate_form($type) {
                 'Call Letters' => array('class' => $defclass, 'name' => 'call'),
                 'Broadcast Date' => array('class' => $defclass, 'name' => 'date'),
             );
-            break;
         case 'interview':
             // Person Interviewed. Type of Interview (personal, telephone, email, etc.). Date.
             return array(
