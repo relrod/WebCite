@@ -2,8 +2,8 @@
 
 require_once './form_funcs.php';
 
-function parse_post_data($type) {
-    switch($type) {
+function parse_post_data($post_data) {
+    switch($post_data['type']) {
         case 'book':
             // Author. _Title of Book_. City of Publication: Publisher, Year.
         case 'essay':
