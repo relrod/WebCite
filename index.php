@@ -2,6 +2,8 @@
 // Plug CSRF Security Hole
 session_start();
 require_once './helper_funcs.php';
+require_once './form_funcs.php';
+
 $_SESSION['csrf_token'] = sha1(uniqid(rand()));
 $type = $_GET['type'];
 $possible_types = mla_types();
