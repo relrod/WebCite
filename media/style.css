@@ -29,6 +29,7 @@ html {
 }
 #container input.default {
     color: #aaa;
+    width: 265px; /* Half of .single */
 }
 #container input.submit {
     font-size: 2em;

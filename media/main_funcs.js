@@ -15,7 +15,6 @@ function addAuthor() {
     
     var authorform = new Array()
     authorform['author_first_name'] = "First";
-    authorform['author_middle_initial'] = "M.I.";
     authorform['author_last_name'] = "Last";
     for(key in authorform) { // Better than repeating this 3 times.
         var ele = document.createElement('input');
