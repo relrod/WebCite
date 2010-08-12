@@ -34,6 +34,13 @@ function mla_types() {
     );
 }
 
+function english_list($array) {
+    // Converts array('foo','bar','baz') to 'foo, bar, and baz'
+    $last_element = array_pop($array);
+    if(count($array) == 1) return $last_element;
+    return implode($array, ', ').", and $last_element";
+}
+
 // Used in global.php
 function new_or_error($session, $newmsg, $errmsg) {
     if($session['new']) return $newmsg;
