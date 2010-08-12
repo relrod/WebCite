@@ -1,4 +1,33 @@
 <?php
+
+require_once './form_funcs.php';
+
+function parse_post_data($type) {
+    switch($type) {
+        case 'book':
+            // Author. _Title of Book_. City of Publication: Publisher, Year.
+        case 'essay':
+            // Author of Story. "Title of Story." _Title of Book_. Name of Editor. Edition (if given). 
+            //     City of Publication: Publisher, Year. Page numbers.
+        case 'ref':
+            // Author of Article (if given). "Article Title." _Title of Book_. City of Publication: 
+            //     Publisher, Year.
+        case 'magazine':
+            // Author. "Title of Article." _Title of Magazine_ Date: Page(s).
+        case 'article':
+            // Author. "Title of Article." _Name of Newspaper_ Date, edition: Page(s).
+        case 'web':
+            // _Title of the Site_. Editor. Date and/or Version Number. Name of Sponsoring Institution. 
+            //     Date of Access <URL>.
+        case 'tv':
+            // "Title of Episode or Segment."  _Title of Program or Series_. Credit (Performer, writer, 
+            //     etc). Name of Network. Call Letters (if any), City of Local Station (if any). 
+            //     Broadcast Date.
+        case 'interview':
+            // Person Interviewed. Type of Interview (personal, telephone, email, etc.). Date.
+    }
+}
+
 function generate_form($type) {
     // This generates the form.. or an easy array to iterate through
     // to get the form, at least.
