@@ -53,11 +53,3 @@ function parse_names($array_fn, $array_ln) {
     }
     return english_list($names);
 }
-
-// Used in global.php
-function new_or_error($session, $newmsg, $errmsg) {
-    if($session['new']) return $newmsg;
-    if($session['err']) return $errmsg;
-}
-
-#header("Location: /");

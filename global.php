@@ -10,7 +10,7 @@ require_once './helper_funcs.php';
         <link href="./media/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h4><?php echo new_or_error($_SESSION, "Welcome to WebCite!", "An error has occurred!")?></h4>
+        <h4><?php if($_SESSION['err']) { echo "An error has occured!"; } else { echo "Welcome to WebCite!"; } ?></h4>
         <div id="container">
             <?php
             if($_SESSION['err']) echo $_SESSION['err'];
