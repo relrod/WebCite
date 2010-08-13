@@ -5,7 +5,7 @@ validate_csrf();
 ?>
 
 <b>session: <?php echo $_SESSION['csrf_token']; ?></b>
-<pre>
+<pre style="text-align: left;">
 <?php print_r($_POST); ?>
 </pre>
 
@@ -25,6 +25,18 @@ if($_POST['website'] != '') {
 ?>
 <b><?php echo $title; ?></b>
 
-<hr />
-<?php echo parse_post_data($_POST); ?>
-<hr />
+
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>WebCite: Your MLA Citation</title>
+        <link href="./media/style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h4>Your MLA Citation:</h4>
+        <div id="container">
+            <?php echo parse_post_data($_POST); ?>
+        </div>
+    </body>
+</html>
