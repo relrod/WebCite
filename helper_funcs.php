@@ -37,7 +37,7 @@ function mla_types() {
 function english_list($array) {
     // Converts array('foo','bar','baz') to 'foo, bar, and baz'
     $last_element = array_pop($array);
-    if(count($array) == 1) return $last_element;
+    if(count($array) == 0) return $last_element;
     return implode($array, ', ').", and $last_element";
 }
 
