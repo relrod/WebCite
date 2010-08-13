@@ -41,6 +41,19 @@ function english_list($array) {
     return implode($array, ', ').", and $last_element";
 }
 
+function parse_names($array_fn, $array_ln) {
+    // Takes two arrays and combines them into a string, provided by english_list().
+    $count_fn = count($array_fn);
+    $names = array();
+    if($count_fn != count($array_ln)) return false;
+    $names[] = array_shift($array_ln).", ".array_shift($array_fn);
+    $count_fn--;
+    for($i = 0; $i < $count_fn; $i++) {
+        $names[] = $array_fn[$i]." ".$array_ln[$i];
+    }
+    return english_list($names);
+}
+
 // Used in global.php
 function new_or_error($session, $newmsg, $errmsg) {
     if($session['new']) return $newmsg;
