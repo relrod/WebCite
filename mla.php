@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once './helper_funcs.php';
+require_once './form_funcs.php';
 validate_csrf();
 ?>
 
@@ -24,3 +24,7 @@ if($_POST['website'] != '') {
 }
 ?>
 <b><?php echo $title; ?></b>
+
+<hr />
+<?php echo parse_post_data($_POST); ?>
+<hr />

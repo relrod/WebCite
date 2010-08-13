@@ -7,6 +7,9 @@ function parse_post_data($post_data) {
     switch($post_data['type']) {
         case 'book':
             // Author. _Title of Book_. City of Publication: Publisher, Year.
+            return parse_names($post_data['author_first_name'], $post_data['author_last_name']).'. '
+                . '<u>'.$post_data['title'].'</u>. '.$post_data['city'].': '.$post_data['publisher'].', '
+                . $post_data['year'].'.';
         case 'essay':
             // Author of Story. "Title of Story." _Title of Book_. Name of Editor. Edition (if given). 
             //     City of Publication: Publisher, Year. Page numbers.
