@@ -1,10 +1,6 @@
 <?php
 
-require_once './form_funcs.php';
-
-function parse_names($array_fn, $array_ln) {
-    // Takes two arrays and combines them into an array of strings.
-}
+require_once './helper_funcs.php';
 
 function parse_post_data($post_data) {
     // This returns an array containing two arrays. One for line one, one for line two.
