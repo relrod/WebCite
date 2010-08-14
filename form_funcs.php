@@ -4,6 +4,7 @@ require_once './helper_funcs.php';
 
 function parse_post_data($post_data) {
     // This returns an array containing two arrays. One for line one, one for line two.
+    $indent = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
     switch($post_data['type']) {
         case 'book':
             // Author. _Title of Book_. City of Publication: Publisher, Year.
@@ -13,16 +14,32 @@ function parse_post_data($post_data) {
         case 'essay':
             // Author of Story. "Title of Story." _Title of Book_. Name of Editor. Edition (if given). 
             //     City of Publication: Publisher, Year. Page numbers.
+            return parse_names($post_data['author_first_name'], $post_data['author_last_name']).'. '
+                . '"'.$post_data['title'].'." <u>'.$post_data['book'].'</u>. '.$post_data['editor']
+                . '.<br />'.$indent.$post_data['city'].': '.$post_data['publisher']
+                . ', '.$post_data['year'].'. '.$post_data['pages'].'.';
         case 'ref':
             // Author of Article (if given). "Article Title." _Title of Book_. City of Publication: 
             //     Publisher, Year.
+            return parse_names($post_data['author_first_name'], $post_data['author_last_name']).'. '
+                . '"'.$post_data['title'].'." <u>'.$post_data['title'].'</u>. '.$post_data['city']
+                . ':<br />'.$indent.$post_data['publisher'].', '.$post_data['year'].'.';
         case 'magazine':
             // Author. "Title of Article." _Title of Magazine_ Date: Page(s).
+            return parse_names($post_data['author_first_name'], $post_data['author_last_name']).'. '
+                . '"'.$post_data['title'].'." <u>'.$post_data['magtitle'].'</u>. '.$post_data['date']
+                . ': '.$post_data['pages'].'.';
         case 'article':
             // Author. "Title of Article." _Name of Newspaper_ Date, edition: Page(s).
+            return parse_names($post_data['author_first_name'], $post_data['author_last_name']).'. '
+                . '"'.$post_data['title'].'." <u>'.$post_data['newstitle'].'</u>. '.$post_data['date']
+                . ', '.$post_data['edition'].': '.$post_data['pages'].'.';
         case 'web':
             // _Title of the Site_. Editor. Date and/or Version Number. Name of Sponsoring Institution. 
             //     Date of Access <URL>.
+            return '<u>'.fetch_url_title($post_data['ur']).'</u>. '.$post_data['editor'].'. '
+                . $post_data['date_written'].'. '.$post_data['sponsor'].'.<br />'.$indent
+                . $post_data['date_access'].' <'.$post_data['url'].'>.';
         case 'tv':
             // "Title of Episode or Segment."  _Title of Program or Series_. Credit (Performer, writer, 
             //     etc). Name of Network. Call Letters (if any), City of Local Station (if any). 
@@ -89,7 +106,7 @@ function generate_form($type) {
             // _Title of the Site_. Editor. Date and/or Version Number. Name of Sponsoring Institution. 
             //     Date of Access <URL>.
             return array(
-                'Title of Site' => array('class' => $defclass, 'name' => 'title'),
+                'URL of Site' => array('class' => $defclass, 'name' => 'url'),
                 'Editor' => array('class' => $defclass, 'name' => 'editor'),
                 'Date Written' => array('class' => $defclass, 'name' => 'date_written'),
                 'Sponsor' => array('class' => $defclass, 'name' => 'sponsor'),
