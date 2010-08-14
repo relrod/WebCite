@@ -49,6 +49,7 @@ function parse_post_data($post_data) {
                 . $indent.$post_data['date'];
         case 'interview':
             // Person Interviewed. Type of Interview (personal, telephone, email, etc.). Date.
+            return $post_data['person'].' '.$post_data['type'].'. '.$post_data['date'];
     }
 }
 
