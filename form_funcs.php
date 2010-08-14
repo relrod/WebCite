@@ -41,9 +41,12 @@ function parse_post_data($post_data) {
                 . $post_data['date_written'].'. '.$post_data['sponsor'].'.<br />'.$indent
                 . $post_data['date_access'].' <'.$post_data['url'].'>.';
         case 'tv':
-            // "Title of Episode or Segment."  _Title of Program or Series_. Credit (Performer, writer, 
+            // "Title of Episode or Segment."  _Title of Program or Series_. Credit (Performer, writer, \
             //     etc). Name of Network. Call Letters (if any), City of Local Station (if any). 
             //     Broadcast Date.
+            return '"'.$post_data['episode'].'." <u>'.$post_data['program'].'</u>. '.$post_data['credit']
+                . '. '.$post_data['network'].'. '.$post_data['call'].', '.$post_data['city'].'.<br />'
+                . $indent.$post_data['date'];
         case 'interview':
             // Person Interviewed. Type of Interview (personal, telephone, email, etc.). Date.
     }
@@ -122,6 +125,7 @@ function generate_form($type) {
                 'Credit' => array('class' => $defclass, 'name' => 'credit'),
                 'Name of Network' => array('class' => $defclass, 'name' => 'network'),
                 'Call Letters' => array('class' => $defclass, 'name' => 'call'),
+                'City/Origin of Station' => array('class' => $defclass, 'name' => 'city'),
                 'Broadcast Date' => array('class' => $defclass, 'name' => 'date'),
             );
         case 'interview':
